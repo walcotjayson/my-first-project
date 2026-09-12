@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Metal Matrimony Price Calculator</title>
+</head>
+
+<body>
+    <h1>Metal Matrimony</h1>
+    <h2>Fabrication Price Calculator</h2>
+
+    <label>Material Cost (KSh):</label><br>
+    <input type="number" id="material"><br><br>
+
+    <label>Labour Cost (KSh):</label><br>
+    <input type="number" id="labour"><br><br>
+
+    <label>Transport Cost (KSh):</label><br>
+    <input type="number" id="transport"><br><br>
+
+    <label>Profit (%):</label><br>
+    <input type="number" id="profit" value="20"><br><br>
+
+    <button onclick="calculate()">Calculate Price</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function calculate() {
+            let material = Number(document.getElementById("material").value);
+            let labour = Number(document.getElementById("labour").value);
+            let transport = Number(document.getElementById("transport").value);
+            let profit = Number(document.getElementById("profit").value);
+
+            let cost = material + labour + transport;
+            let sellingPrice = cost + (cost * profit / 100);
+
+            document.getElementById("result").innerHTML =
+                "Recommended Selling Price: KSh " + sellingPrice.toFixed(2);
+        }
+    </script>
+</body>
+</html>
