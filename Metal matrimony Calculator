@@ -1,184 +1,380 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Metal Matrimony Price Calculator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #111111;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 30px 15px;
-        }
+<title>Metal Matrimony Quotation</title>
 
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        margin: 0;
+        background: #f2f2f2;
+        color: #222;
+    }
+
+    .container {
+        max-width: 850px;
+        margin: 20px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    .header {
+        text-align: center;
+        border-bottom: 3px solid #111;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        width: 110px;
+        max-height: 110px;
+        object-fit: contain;
+        margin-bottom: 8px;
+    }
+
+    .company-name {
+        font-size: 32px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin: 5px 0;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        color: #666;
+    }
+
+    h2 {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-top: 14px;
+        margin-bottom: 6px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 7px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    .calculate {
+        background: #111;
+        color: white;
+    }
+
+    .whatsapp {
+        background: #25D366;
+        color: white;
+    }
+
+    .quotation {
+        display: none;
+        margin-top: 30px;
+        border: 2px solid #111;
+        padding: 25px;
+        border-radius: 8px;
+    }
+
+    .quotation-header {
+        text-align: center;
+        border-bottom: 2px solid #111;
+        padding-bottom: 15px;
+    }
+
+    .quotation-header h1 {
+        margin: 5px 0;
+    }
+
+    .quotation-info {
+        margin: 20px 0;
+    }
+
+    .quotation-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .total {
+        font-size: 22px;
+        font-weight: bold;
+        border-top: 3px solid #111;
+        margin-top: 15px;
+        padding-top: 15px;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 25px;
+        font-size: 13px;
+        color: #666;
+    }
+
+    @media (max-width: 600px) {
         .container {
-            max-width: 450px;
-            margin: auto;
-            background: #222222;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+            margin: 0;
+            border-radius: 0;
+            padding: 18px;
         }
 
-        .logo {
-            width: 130px;
-            max-width: 80%;
-            margin-bottom: 15px;
+        .grid {
+            grid-template-columns: 1fr;
         }
 
-        h1 {
-            color: #d4af37;
-            margin: 5px 0;
-            font-size: 28px;
-            letter-spacing: 2px;
+        .company-name {
+            font-size: 25px;
         }
-
-        .tagline {
-            color: #cccccc;
-            margin-bottom: 25px;
-        }
-
-        h2 {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            text-align: left;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input {
-            box-sizing: border-box;
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 7px;
-            font-size: 16px;
-        }
-
-        button {
-            width: 100%;
-            margin-top: 25px;
-            padding: 15px;
-            background: #d4af37;
-            color: #111111;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #f0c94d;
-        }
-
-        #result {
-            color: #d4af37;
-            margin-top: 30px;
-            line-height: 1.5;
-        }
-
-        .footer {
-            margin-top: 25px;
-            color: #999999;
-            font-size: 13px;
-        }
-    </style>
+    }
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <!-- Metal Matrimony Logo -->
-    <img
-        class="logo"
-        src="file_00000000fdf081f4ac4e1833d9dc2eb1.png"
-        alt="Metal Matrimony Logo"
-    >
+    <!-- COMPANY HEADER -->
+    <div class="header">
 
-    <h1>METAL MATRIMONY</h1>
+        <img
+            class="logo"
+            src="file_00000000fdf081f4ac4e1833d9dc2eb1.png"
+            alt="Metal Matrimony">
 
-    <div class="tagline">
-        Quality • Strength • Aesthetics
+        <div class="company-name">
+            METAL MATRIMONY
+        </div>
+
+        <div class="subtitle">
+            Welding & Fabrication
+        </div>
+
     </div>
 
-    <h2>Fabrication Price Calculator</h2>
+    <h2>QUOTATION</h2>
 
-    <label for="material">Material Cost (KSh)</label>
-    <input
-        type="number"
-        id="material"
-        placeholder="Enter material cost"
-    >
+    <!-- CUSTOMER DETAILS -->
+    <div class="grid">
 
-    <label for="labour">Labour Cost (KSh)</label>
-    <input
-        type="number"
-        id="labour"
-        placeholder="Enter labour cost"
-    >
+        <div>
+            <label>Client Name</label>
+            <input type="text" id="client" placeholder="Enter client name">
+        </div>
 
-    <label for="transport">Transport Cost (KSh)</label>
-    <input
-        type="number"
-        id="transport"
-        placeholder="Enter transport cost"
-    >
+        <div>
+            <label>Project</label>
+            <input type="text" id="project" placeholder="Enter project">
+        </div>
 
-    <label for="profit">Profit (%)</label>
-    <input
-        type="number"
-        id="profit"
-        value="20"
-    >
+    </div>
 
-    <button onclick="calculate()">
-        CALCULATE PRICE
+    <!-- COSTS -->
+    <label>Material Cost (KSh)</label>
+    <input type="number" id="material" placeholder="0">
+
+    <label>Labour Cost (KSh)</label>
+    <input type="number" id="labour" placeholder="0">
+
+    <label>Transport Cost (KSh)</label>
+    <input type="number" id="transport" placeholder="0">
+
+    <label>Profit (%)</label>
+    <input type="number" id="profit" value="20">
+
+    <button class="calculate" onclick="calculateQuotation()">
+        GENERATE QUOTATION
     </button>
 
-    <h2 id="result"></h2>
+    <!-- QUOTATION -->
+    <div class="quotation" id="quotation">
 
-    <div class="footer">
-        Metal Matrimony © 2026
+        <div class="quotation-header">
+
+            <img
+                class="logo"
+                src="file_00000000fdf081f4ac4e1833d9dc2eb1.png"
+                alt="Metal Matrimony">
+
+            <h1>METAL MATRIMONY</h1>
+            <strong>QUOTATION</strong>
+
+        </div>
+
+        <div class="quotation-info">
+
+            <div class="quotation-row">
+                <span>Client:</span>
+                <strong id="qClient"></strong>
+            </div>
+
+            <div class="quotation-row">
+                <span>Project:</span>
+                <strong id="qProject"></strong>
+            </div>
+
+            <div class="quotation-row">
+                <span>Material:</span>
+                <strong id="qMaterial"></strong>
+            </div>
+
+            <div class="quotation-row">
+                <span>Labour:</span>
+                <strong id="qLabour"></strong>
+            </div>
+
+            <div class="quotation-row">
+                <span>Transport:</span>
+                <strong id="qTransport"></strong>
+            </div>
+
+            <div class="quotation-row">
+                <span>Profit:</span>
+                <strong id="qProfit"></strong>
+            </div>
+
+            <div class="quotation-row total">
+                <span>TOTAL:</span>
+                <strong id="qTotal"></strong>
+            </div>
+
+        </div>
+
+        <button class="whatsapp" onclick="sendWhatsApp()">
+            SEND QUOTATION ON WHATSAPP
+        </button>
+
+        <div class="footer">
+            Quality is my priority
+        </div>
+
     </div>
 
 </div>
 
 <script>
-    function calculate() {
 
-        let material = Number(
-            document.getElementById("material").value
-        );
+let quotationMessage = "";
 
-        let labour = Number(
-            document.getElementById("labour").value
-        );
+function money(amount) {
+    return "KSh " + amount.toLocaleString("en-KE", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
 
-        let transport = Number(
-            document.getElementById("transport").value
-        );
+function calculateQuotation() {
 
-        let profit = Number(
-            document.getElementById("profit").value
-        );
+    let client =
+        document.getElementById("client").value || "Client";
 
-        let cost = material + labour + transport;
+    let project =
+        document.getElementById("project").value || "Fabrication Project";
 
-        let sellingPrice =
-            cost + (cost * profit / 100);
+    let material =
+        Number(document.getElementById("material").value) || 0;
 
-        document.getElementById("result").innerHTML =
-            "Recommended Selling Price:<br>" +
-            "KSh " + sellingPrice.toFixed(2);
+    let labour =
+        Number(document.getElementById("labour").value) || 0;
+
+    let transport =
+        Number(document.getElementById("transport").value) || 0;
+
+    let profitPercent =
+        Number(document.getElementById("profit").value) || 0;
+
+    let cost = material + labour + transport;
+
+    let profit = cost * profitPercent / 100;
+
+    let total = cost + profit;
+
+    document.getElementById("qClient").textContent = client;
+
+    document.getElementById("qProject").textContent = project;
+
+    document.getElementById("qMaterial").textContent =
+        money(material);
+
+    document.getElementById("qLabour").textContent =
+        money(labour);
+
+    document.getElementById("qTransport").textContent =
+        money(transport);
+
+    document.getElementById("qProfit").textContent =
+        money(profit);
+
+    document.getElementById("qTotal").textContent =
+        money(total);
+
+    document.getElementById("quotation").style.display = "block";
+
+    quotationMessage =
+`METAL MATRIMONY
+QUOTATION
+
+Client: ${client}
+Project: ${project}
+
+Material: ${money(material)}
+Labour: ${money(labour)}
+Transport: ${money(transport)}
+Profit: ${money(profit)}
+
+TOTAL: ${money(total)}
+
+Quality is my priority.`;
+
+}
+
+function sendWhatsApp() {
+
+    if (!quotationMessage) {
+        alert("Please generate the quotation first.");
+        return;
     }
+
+    let url =
+        "https://wa.me/?text=" +
+        encodeURIComponent(quotationMessage);
+
+    window.open(url, "_blank");
+
+}
+
 </script>
 
 </body>
