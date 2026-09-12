@@ -2,41 +2,184 @@
 <html>
 <head>
     <title>Metal Matrimony Price Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111111;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background: #222222;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .logo {
+            width: 130px;
+            max-width: 80%;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #d4af37;
+            margin: 5px 0;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            color: #cccccc;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            background: #d4af37;
+            color: #111111;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f0c94d;
+        }
+
+        #result {
+            color: #d4af37;
+            margin-top: 30px;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #999999;
+            font-size: 13px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Metal Matrimony</h1>
+
+<div class="container">
+
+    <!-- Metal Matrimony Logo -->
+    <img
+        class="logo"
+        src="file_00000000fdf081f4ac4e1833d9dc2eb1.png"
+        alt="Metal Matrimony Logo"
+    >
+
+    <h1>METAL MATRIMONY</h1>
+
+    <div class="tagline">
+        Quality • Strength • Aesthetics
+    </div>
+
     <h2>Fabrication Price Calculator</h2>
 
-    <label>Material Cost (KSh):</label><br>
-    <input type="number" id="material"><br><br>
+    <label for="material">Material Cost (KSh)</label>
+    <input
+        type="number"
+        id="material"
+        placeholder="Enter material cost"
+    >
 
-    <label>Labour Cost (KSh):</label><br>
-    <input type="number" id="labour"><br><br>
+    <label for="labour">Labour Cost (KSh)</label>
+    <input
+        type="number"
+        id="labour"
+        placeholder="Enter labour cost"
+    >
 
-    <label>Transport Cost (KSh):</label><br>
-    <input type="number" id="transport"><br><br>
+    <label for="transport">Transport Cost (KSh)</label>
+    <input
+        type="number"
+        id="transport"
+        placeholder="Enter transport cost"
+    >
 
-    <label>Profit (%):</label><br>
-    <input type="number" id="profit" value="20"><br><br>
+    <label for="profit">Profit (%)</label>
+    <input
+        type="number"
+        id="profit"
+        value="20"
+    >
 
-    <button onclick="calculate()">Calculate Price</button>
+    <button onclick="calculate()">
+        CALCULATE PRICE
+    </button>
 
     <h2 id="result"></h2>
 
-    <script>
-        function calculate() {
-            let material = Number(document.getElementById("material").value);
-            let labour = Number(document.getElementById("labour").value);
-            let transport = Number(document.getElementById("transport").value);
-            let profit = Number(document.getElementById("profit").value);
+    <div class="footer">
+        Metal Matrimony © 2026
+    </div>
 
-            let cost = material + labour + transport;
-            let sellingPrice = cost + (cost * profit / 100);
+</div>
 
-            document.getElementById("result").innerHTML =
-                "Recommended Selling Price: KSh " + sellingPrice.toFixed(2);
-        }
-    </script>
+<script>
+    function calculate() {
+
+        let material = Number(
+            document.getElementById("material").value
+        );
+
+        let labour = Number(
+            document.getElementById("labour").value
+        );
+
+        let transport = Number(
+            document.getElementById("transport").value
+        );
+
+        let profit = Number(
+            document.getElementById("profit").value
+        );
+
+        let cost = material + labour + transport;
+
+        let sellingPrice =
+            cost + (cost * profit / 100);
+
+        document.getElementById("result").innerHTML =
+            "Recommended Selling Price:<br>" +
+            "KSh " + sellingPrice.toFixed(2);
+    }
+</script>
+
 </body>
 </html>
